@@ -1,7 +1,7 @@
 step 1 - clone the repository git clone  https://github.com/asmita-project/angular_machine_test.git
 step 2 - npm install --force
 
-login email and password 
+login credentials
 email-superadmin@gmail.com
 password -123
 
