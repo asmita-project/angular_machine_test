@@ -1,0 +1,42 @@
+<div class="mainbox" style="position: relative;">
+    <div class="containerbox">
+        <div class="childclass">
+            <img src="assets/images.jfif" alt="image" width="100%" height="100%"/>
+           
+        </div>
+        <div class="childclass">
+            <div class="loginboxcss">
+                <div>
+                    <h1>LOG IN</h1>
+                </div>
+    
+                <div>
+                    <form>
+                        <mat-form-field class="formfiled" >
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Placeholder">
+                            <mat-icon matSuffix>person</mat-icon>
+                          </mat-form-field>
+    
+                          <mat-form-field class="formfiled">
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                          </mat-form-field>
+<div style="width:100%;margin-top: 20px;">
+    <button style="width: 100%;" mat-fab extended color="primary">
+        Login
+      </button>
+
+</div>
+                    </form>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.mainbox{
+    background: dodgerblue;
+    display: flex;
+}
+
+.dividetwobox{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.childclass{
+    display: flex;
+    gap: 20px;
+}

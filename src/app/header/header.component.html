@@ -1,0 +1,47 @@
+
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav class="sw-sidenav" mode="push" open="true" style="width: 300px;">
+      <mat-list>
+        <mat-list-item [routerLink]="['/']"> Foo</mat-list-item>
+        <mat-list-item [routerLink]="['/login']">Bar</mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+  
+        <!-- <mat-toolbar color="primary" #toolbar>
+          <button
+            type="button"
+            mat-icon-button
+            (click)="sidenav.open()"
+            title="Open sidenav">
+            <mat-icon>menu</mat-icon>
+          </button>
+          This is my Toolbar
+        </mat-toolbar> -->
+        <div class="mainbox">
+            <div class="dividetwobox">
+                <div class="childclass">
+                    <div>
+                        <button mat-icon-button  (click)="sidenav.open()">
+                            <mat-icon>view_headline</mat-icon>
+                        </button>
+                    </div>
+                    <div>user</div>
+                </div>
+                <div class="childclass">
+                    <div>sidebutton</div>
+                    <div>user</div>
+                </div>
+                
+            </div>
+        </div>
+      <div class="content" #main>
+        <router-outlet></router-outlet>
+      </div>
+  
+      <!-- <div class="footer" #footer>
+        Your sticky footer with a variable height.
+      </div> -->
+    
+    
+  </mat-sidenav-container>
+

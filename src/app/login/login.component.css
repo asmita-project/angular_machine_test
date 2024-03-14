@@ -1,0 +1,28 @@
+.containerbox{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+    width: 60%;
+    height:450px;
+    display: flex;
+    border-radius: 30px;
+}
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+    background-color:white !important;
+}
+.mainbox{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    margin: 100px auto;
+}
+.childclass{
+    width: 50%;
+}
+.loginboxcss{
+    padding: 43px 74px;
+}
+
+.formfiled{
+    width: 100%;
+}
