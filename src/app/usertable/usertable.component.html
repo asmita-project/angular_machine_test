@@ -1,1 +1,237 @@
-<p>usertable works!</p>
+<div style="padding: 15px;">
+    <div>
+        <div
+            style="display: flex;justify-content: space-between;padding-bottom:10px;padding-top:10px;align-items: center;">
+            <div style="color: black;">
+                <h4>Manage User</h4>
+            </div>
+            <div class="searchboxcss">
+                <div class="searchboxinner">
+                    <input type="text" placeholder="Search"  (input)="onSearchChange()" [(ngModel)]="searchinput"  style="color: black !important;" class="inputcssbox" />
+                    <i class="fa fa-search" style="font-size:15px;color: black;"></i>
+
+                </div>
+                <div class="addstatecss" (click)="addRow(recordadd)">
+                    ADD
+                    <!-- <i class="fa fa-plus" style="font-size:20px;color: white;"></i> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table  table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Sr.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of filteredData | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.role}}</td>
+                <td>
+                    <div>
+                        <span (click)="updateRow(editrow,i,item)"><i class="fa fa-pencil"
+                                style="font-size:15;color: blue;"></i></span>&nbsp;
+                        <span (click)="view(viewuser,item)"><i class="fa fa-eye"
+                                style="font-size:15;color: black;"></i></span>&nbsp;
+                        <span (click)="deletedata(i)"><i class="fa fa-trash"
+                                style="font-size:15;color: red;"></i></span>&nbsp;
+
+                    </div>
+
+
+                </td>
+            </tr>
+            
+            
+        </tbody>
+    </table>
+    <div style="text-align: right;">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+
+
+<ng-template #recordadd let-modal>
+    <div>
+        <div class="modal-header editRowModal">
+            <div class="font-weight-bold font-17">
+                <h5>Add User</h5>
+            </div>
+
+            <button type="button" mat-mini-fab class="close" aria-label="Close" (click)="modal.dismiss()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="userForm" (ngSubmit)="submitdata()">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <mat-form-field style="width: 100%;color: black;" appearance="fill">
+                            <mat-label style="color: black;">Name</mat-label>
+                            <input type="text" matInput required formControlName="name" placeholder="Placeholder">
+                           <mat-error >Name Is Required
+        </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field style="width: 100%;color: black;" appearance="fill">
+                            <mat-label style="color: black;">Email</mat-label>
+                            <input type="email" required formControlName="email" matInput placeholder="Placeholder">
+                            <mat-error >Email Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6" appearance="fill">
+                        <mat-form-field style="width: 100%;color: black;" class="example-full-width"
+                            placeholder="Status">
+                            <mat-label style="color: black;">Role</mat-label>
+                            <mat-select formControlName="role" required  style="color: black;" name="food">
+                                <mat-option value="Admin">Admin</mat-option>
+                                <mat-option value="User">User</mat-option>
+                            </mat-select>
+                            <mat-error >Select Role
+                            </mat-error>
+                            
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                      
+                          <div style="display: flex; justify-content: center;margin-top: 10px; margin-bottom: 10px;">
+                           
+                 <button [disabled]="userForm.invalid" mat-raised-button color="primary">Submit</button>
+                 &nbsp;
+                 <button (click)="reset()" mat-raised-button color="primary">Reset</button>
+    
+                </div>
+
+                         
+                          
+                       
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</ng-template>
+
+
+<ng-template #editrow let-modal>
+    <div>
+        <div class="modal-header editRowModal">
+            <div class="font-weight-bold font-17">
+                <h5>Edit User</h5>
+            </div>
+
+            <button type="button" mat-mini-fab class="close" aria-label="Close" (click)="modal.dismiss()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="editform" (ngSubmit)="updateRowSave()">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <mat-form-field style="width: 100%;color: black;" appearance="fill">
+                            <mat-label style="color: black;">Name</mat-label>
+                            <input type="text" matInput required formControlName="name" placeholder="Placeholder">
+                           <mat-error >Name Is Required
+        </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field style="width: 100%;color: black;" appearance="fill">
+                            <mat-label style="color: black;">Email</mat-label>
+                            <input type="email" required formControlName="email" matInput placeholder="Placeholder">
+                            <mat-error >Email Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6" appearance="fill">
+                        <mat-form-field style="width: 100%;color: black;" class="example-full-width"
+                            placeholder="Status">
+                            <mat-label style="color: black;">Role</mat-label>
+                            <mat-select formControlName="role" required  style="color: black;" name="food">
+                                <mat-option value="Admin">Admin</mat-option>
+                                <mat-option value="User">User</mat-option>
+                            </mat-select>
+                            <mat-error >Select Role
+                            </mat-error>
+                            
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                      
+                          <div style="display: flex; justify-content: center;margin-top: 10px; margin-bottom: 10px;">
+                           
+                 <button [disabled]="editform.invalid" mat-raised-button color="primary">Update</button>
+                
+    
+                </div>
+
+                         
+                          
+                       
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</ng-template>
+
+<ng-template #viewuser let-modal>
+    <div>
+        <div class="modal-header editRowModal">
+            <div class="font-weight-bold font-17">
+                <h5>View User</h5>
+            </div>
+
+            <button type="button" mat-mini-fab class="close" aria-label="Close" (click)="modal.dismiss()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="editform" >
+                <div class="row">
+                    <div class="col-sm-6">
+                        <mat-form-field style="width: 100%;color: black;" appearance="fill">
+                            <mat-label style="color: black;">Name</mat-label>
+                            <input type="text" matInput readonly formControlName="name" placeholder="Placeholder">
+                           
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field style="width: 100%;color: black;" appearance="fill">
+                            <mat-label style="color: black;">Email</mat-label>
+                            <input type="email" readonly formControlName="email" matInput placeholder="Placeholder">
+                            
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6" appearance="fill">
+                        <mat-form-field style="width: 100%;color: black;" class="example-full-width"
+                            placeholder="Status">
+                            <mat-label style="color: black;">Role</mat-label>
+                            <input type="text" readonly formControlName="role" matInput placeholder="Placeholder">
+   
+                            
+                        </mat-form-field>
+                    </div>
+                </div>
+              
+            </form>
+        </div>
+
+    </div>
+</ng-template>

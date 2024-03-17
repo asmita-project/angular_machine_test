@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidepanelComponent } from './sidepanel.component';
+import { EmployeeComponent } from './employee.component';
 
-describe('SidepanelComponent', () => {
-  let component: SidepanelComponent;
-  let fixture: ComponentFixture<SidepanelComponent>;
+describe('EmployeeComponent', () => {
+  let component: EmployeeComponent;
+  let fixture: ComponentFixture<EmployeeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SidepanelComponent]
+      imports: [EmployeeComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(SidepanelComponent);
+    fixture = TestBed.createComponent(EmployeeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

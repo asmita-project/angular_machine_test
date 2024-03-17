@@ -1,47 +1,118 @@
+<div>
 
-<mat-sidenav-container fullscreen>
-    <mat-sidenav #sidenav class="sw-sidenav" mode="push" open="true" style="width: 300px;">
-      <mat-list>
-        <mat-list-item [routerLink]="['/']"> Foo</mat-list-item>
-        <mat-list-item [routerLink]="['/login']">Bar</mat-list-item>
-      </mat-list>
-    </mat-sidenav>
-  
-        <!-- <mat-toolbar color="primary" #toolbar>
-          <button
-            type="button"
-            mat-icon-button
-            (click)="sidenav.open()"
-            title="Open sidenav">
-            <mat-icon>menu</mat-icon>
-          </button>
-          This is my Toolbar
-        </mat-toolbar> -->
-        <div class="mainbox">
-            <div class="dividetwobox">
-                <div class="childclass">
-                    <div>
-                        <button mat-icon-button  (click)="sidenav.open()">
-                            <mat-icon>view_headline</mat-icon>
-                        </button>
-                    </div>
-                    <div>user</div>
+    <!-- <mat-sidenav-container fullscreen>
+        <mat-sidenav style="width: 12%;" #sidenav mode="push">
+            <div class="headerbox">
+                <div class="sidenavlogo">
+                    <img src="assets/download (1).jpg" style="border-radius: 50px;" alt="image" width="100%" height="100%"/>
                 </div>
-                <div class="childclass">
-                    <div>sidebutton</div>
-                    <div>user</div>
+                <div class="usertitle">
+                    superadmin name
                 </div>
-                
             </div>
-        </div>
-      <div class="content" #main>
-        <router-outlet></router-outlet>
-      </div>
-  
-      <!-- <div class="footer" #footer>
-        Your sticky footer with a variable height.
-      </div> -->
-    
-    
-  </mat-sidenav-container>
+            <section>
+                <mat-list class="nav" style="padding: 10px;">
+                    <a  class="sideitem" routerLink="/">
+                        <div class="hover sidebox" >
+                            <div class="navclass">
+                                <mat-icon>
+                                    people</mat-icon>
+                                    <span >User</span>
+                            </div>
+                           
+                          
+                        </div>
+                    </a>
+                    <a  class="sideitem" >
+                        <div class="hover sidebox" >
+                            <div class="navclass">
+                                <mat-icon >
+                                    people</mat-icon>
+                                <span >Employee</span>
+                            </div>
+                           
+                          
+                        </div>
+                    </a>
+                   
+                   
+                </mat-list>
+            </section>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="content-container">
+                
+                <router-outlet></router-outlet>
 
+             
+            </div>
+
+        </mat-sidenav-content>
+    </mat-sidenav-container> -->
+    <mat-drawer-container class="example-container" fullscreen>
+        <mat-toolbar color="primary" style="position:sticky; width: 100%;">
+            <button mat-icon-button (click)="sidenav.toggle()" class="example-icon"
+                aria-label="Example icon-button with menu icon">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>My App</span>
+            <span class="example-spacer"></span>
+            <mat-label (click)="logout()" style="cursor: pointer;">Logout</mat-label>
+            <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon>power</mat-icon>
+                <mat-label>Logout</mat-label>
+                
+            </button> -->
+            <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                <mat-icon>share</mat-icon>
+            </button> -->
+        </mat-toolbar>
+        <mat-drawer #sidenav class="example-sidenav" mode="side">
+            <div class="headerbox">
+                <div class="sidenavlogo">
+                    <img src="assets/download (1).jpg" style="border-radius: 50px;" alt="image" width="100%"
+                        height="100%" />
+                </div>
+                <div class="usertitle">
+                    superadmin name
+                </div>
+            </div>
+            <section>
+                <mat-list class="nav" style="padding: 10px;">
+                    <a  class="sideitem"  routerLink="/user">
+                        <div class="hover sidebox" >
+                            <div class="navclass">
+                                <mat-icon>
+                                    people</mat-icon>
+                                    <span >User</span>
+                            </div>
+                           
+                          
+                        </div>
+                    </a>
+                    <a  class="sideitem" routerLink="/employee">
+                        <div class="hover sidebox" >
+                            <div class="navclass">
+                                <mat-icon >
+                                    people</mat-icon>
+                                <span >Employee</span>
+                            </div>
+                           
+                          
+                        </div>
+                    </a>
+                   
+                   
+                </mat-list>
+            </section>
+        </mat-drawer>
+
+
+        <div class="example-sidenav-content">
+            <router-outlet></router-outlet>
+           <!-- <h3>333</h3> -->
+        </div>
+
+    </mat-drawer-container>
+
+</div>

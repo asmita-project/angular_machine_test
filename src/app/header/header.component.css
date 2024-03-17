@@ -1,16 +1,46 @@
-.mainbox{
-    background: dodgerblue;
-    display: flex;
-}
+.example-spacer {
+    flex: 1 1 auto;
+  }
 
-.dividetwobox{
-    width: 100%;
-    padding: 20px;
+  .content-container {
+    /* min-height: 80vh; */
+    box-sizing: border-box;
+    padding: 25px;
+  }
+
+  .sidebox{
+    padding: 10px;
     display: flex;
     justify-content: space-between;
-}
+  }
 
-.childclass{
+  .navclass{
+    gap: 11px;
     display: flex;
-    gap: 20px;
-}
+    justify-content: flex-start;
+  }
+  .usertitle{
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  .headerbox{
+    gap: 10px;
+    padding: 25px 11px;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid;
+  }
+
+  .sidenavlogo{
+    border: 2px solid white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+  }
+  .sideitem{
+    cursor: pointer;
+  }
